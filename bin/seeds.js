@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
+const Table = require("../models/Table");
+const tables = require("../bin/tables.json");
 
 mongoose.connect("mongodb://localhost:27017/pingpongmap", () => {
   console.log("Connected to DB");
 });
-
-const Table = require("../models/Table");
 
 Table.collection.drop();
 
