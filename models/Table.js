@@ -6,7 +6,7 @@ const tableSchema = new mongoose.Schema({
     required: true
   },
 
-  coordinate: {
+  coordinates: {
     type: {
       type: String,
       default: "Point"

@@ -1,0 +1,30 @@
+[
+  {
+    "username": "martin",
+    "password": "martin",
+    "profilepicture": "https://c2.staticflickr.com/6/5078/29313044693_e45059c6c7_b.jpg",
+    "email": "foo@foo.bar",
+    "tables_added": "10",
+    "tables_played": "11",
+    "currently_playing": "12"
+  },
+  {
+    "username": "marcel",
+    "password": "marcel",
+    "profilepicture": "https://c2.staticflickr.com/6/5078/29313044693_e45059c6c7_b.jpg",
+    "email": "foo@foo.bar",
+    "tables_added": "20",
+    "tables_played": "21",
+    "currently_playing": "22"
+  }
+  ,
+  {
+    "username": "markus",
+    "password": "markus",
+    "profilepicture": "https://c2.staticflickr.com/6/5078/29313044693_e45059c6c7_b.jpg",
+    "email": "foo@foo.bar",
+    "tables_added": "30",
+    "tables_played": "31",
+    "currently_playing": "32"
+  }
+]
