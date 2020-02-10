@@ -1,10 +1,9 @@
-const express = require("express");
-const router = express.Router();
-const mapboxToken = process.env.MAPBOXTOKEN;
+const express = require('express');
+const router  = express.Router();
 
 /* GET home page */
-router.get("/", (req, res, next) => {
-  res.render("index", { mapboxToken: JSON.stringify(mapboxToken) });
+router.get('/', (req, res, next) => {
+  res.render('index');
 });
 
 module.exports = router;
