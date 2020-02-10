@@ -1,2 +1,2 @@
-I wand to change something
+I want to change something
 Test Test 
