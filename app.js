@@ -54,4 +54,13 @@ app.locals.title = "Express - pingpongmap was generated with IronGenerator";
 const index = require("./routes/index");
 app.use("/", index);
 
+const tableRoutes = require("./routes/tables");
+app.use("/", tableRoutes);
+
+const authRoutes = require("./routes/auth");
+app.use("/auth", authRoutes);
+
+const profileRoutes = require("./routes/profile");
+app.use("/", profileRoutes);
+
 module.exports = app;
