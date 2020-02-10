@@ -7,7 +7,7 @@
     var myMap = new mapboxgl.Map({
         center: [13.40, 52.52],
         zoom: 12,
-    mapboxgl.accessToken = 'pk.eyJ1IjoibWFyY2VsLXJpZWsiLCJhIjoiY2s2Z2I2cmh1MHl6NjNrbnZrcmQzYzhwNSJ9.8jZILUGNNYa7_4ALS-OTdQ';
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWFyY2VsLXJpZWsiLCJhIjoiY2s2Z2I2cmh1MHl6NjNrbnZrcmQzYzhwNSJ9.8jZILUGNNYa7_4ALS-OTdQ';
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11'
 </script> --}}
@@ -75,10 +75,10 @@
         };
 
         // Add marker color, symbol, and size to hospital GeoJSON
-        for (var i = 0; i < hospitals.features.length; i++) {
+        for(var i = 0; i<hospitals.features.length; i++) {
             hospitals.features[i].properties['marker-color'] = '#DC143C';
-            hospitals.features[i].properties['marker-symbol'] = 'hospital';
-            hospitals.features[i].properties['marker-size'] = 'small';
+        hospitals.features[i].properties['marker-symbol'] = 'hospital';
+        hospitals.features[i].properties['marker-size'] = 'small';
         }
 
         // Add marker color, symbol, and size to library GeoJSON
