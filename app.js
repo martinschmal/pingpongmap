@@ -79,6 +79,7 @@ require("./passport")(app);
 
 const index = require("./routes/index");
 app.use("/", index);
+
 const tableRoutes = require("./routes/tables");
 app.use("/", tableRoutes);
 
