@@ -45,6 +45,8 @@ router.get("/", (req, res, next) => {
       //             "properties": { "description": description , "location": location },
       //             "geometry": geoJSON
       //         },
+      console.log("result >>> " + result);
+      res.render("index.hbs", { tablesList: result, user: req.session.user });
     })
     .catch(err => {
       next(err);

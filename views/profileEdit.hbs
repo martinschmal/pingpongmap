@@ -1,0 +1,9 @@
+<h2>Edit profile</h2>
+
+<form action="/profile/{{_id}}" method="POST">
+  <label for="username">Username</label>
+  <input type="text" value="{{user}}" name="username" id="username">
+  <label for="email">Email</label>
+  <input type="text" value="{{}}" name="email" id="email">
+  <button type="submit">Edit profile</button>
+</form>
