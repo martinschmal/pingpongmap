@@ -34,19 +34,10 @@ router.get("/", (req, res, next) => {
 
       res.render("index.hbs", {
         tablesList: result,
-        tableLocation: JSON.stringify(tableLocation)
-      });
-
-      //  tableLocation = {
-      //     "type": "FeatureCollection",
-      //     "features": [
-      //         {
-      //             "type": "Feature",
-      //             "properties": { "description": description , "location": location },
-      //             "geometry": geoJSON
-      //         },
-      console.log("result >>> " + result);
-      res.render("index.hbs", { tablesList: result, user: req.session.user });
+        tableLocation: JSON.stringify(tableLocation),
+        user: req.session.user
+      });   
+     
     })
     .catch(err => {
       next(err);
