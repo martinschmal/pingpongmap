@@ -6,32 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
-  {{!-- <script src="jquery-3.4.1.min.js"></script> --}}
-
-  <!-- Latest compiled and minified CSS -->
-  {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-  
-    {{!-- <!-- Latest compiled and minified CSS -->
+  {{!-- <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAc1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
     integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
     integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
     crossorigin="anonymous"></script> --}}
-
   <link rel="stylesheet" href="/stylesheets/style.css" />
-
-
 </head>
 
 <body>
-
   {{!-- Navbar from Bootstrap https://getbootstrap.com/docs/3.4/components/#navbar --}}
   <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -53,7 +41,6 @@
           <li><a href="#">Link</a></li> --}}
           <li> <a href="/auth/login">Log in</a></li>
           <li><a href="/profile">Profile</a></li>
-
           {{!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
               aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -76,9 +63,9 @@
         </form> --}}
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/auth/signup">Sign up</a></li>
-          {{#if user}}
+
           <li><a href="/auth/logout">Logout</a></li>
-          {{/if}}
+
           {{!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
               aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -94,12 +81,7 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-
-
-
-
   {{{body}}}
-
   <script src="/javascripts/script.js"></script>
 </body>
 

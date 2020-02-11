@@ -4,7 +4,12 @@ const User = require("../models/User");
 
 // GET route to display the profile page
 router.get("/profile", (req, res, next) => {
-  res.render("profile");
+  console.log("sesssssion", req.user);
+  if (req.user) {
+    res.render("profile");
+  } else {
+    res.redirect("/");
+  }
 });
 
 module.exports = router;
