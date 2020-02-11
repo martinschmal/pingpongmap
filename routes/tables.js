@@ -13,4 +13,24 @@ router.get("/tables", (req, res) => {
     });
 });
 
+// GET route to display table details page
+router.get("/tables/:id", (req, res, next) => {
+  Table.findById(req.table._id)
+    // .populate("owner comments")
+    // .populate({
+    //   path: "owner comments",
+    //   populate: {
+    //     path: "author"
+    //   }
+    // })
+    .then(table => {
+      res.render("tables/tableDetail.hbs", {
+        table: req.table
+      });
+    })
+    .catch(err => {
+      next(err);
+    });
+});
+
 module.exports = router;
