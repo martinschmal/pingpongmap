@@ -11,7 +11,7 @@ router.get("/", (req, res, next) => {
   Table.find({})
     .then(result => {
       console.log("result >>> " + result);
-      res.render("index.hbs", result);
+      res.render("index.hbs", { tablesList: result });
     })
     .catch(err => {
       next(err);

@@ -22,7 +22,6 @@
     <link href='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.css' rel='stylesheet' />
     <script src='https://api.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
 
- 
 
     <style>
         body {
@@ -32,7 +31,7 @@
 
         #map {
             position: absolute;
-            top: 200px;
+            top: 350px;
             bottom: 50px;
             width: 100%
         }
@@ -40,12 +39,12 @@
 </head>
 
 <body>
-
-    <h2>Maintainers: {{maintainers:}}</h2>
-    <p>{{location:}}</p>
+    {{#each tablesList}}
+    <h2>location: {{location:}}</h2>
+    <p>geoJSON: {{geoJSON::}}</p>
     <p>description:{{description:}}</p>
     </a>
-
+    {{/each}}
 
 
     <div id='map'></div>
