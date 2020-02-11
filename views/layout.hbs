@@ -16,6 +16,7 @@
   <script src='https://api.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
 
 
+
 </head>
 
 <body>
@@ -32,7 +33,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button> --}}
-        <a class="navbar-brand" href="#">Pingpong Map</a>
+        <a class="navbar-brand" href="/">Pingpong Map</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -64,9 +65,9 @@
         </form> --}}
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/auth/signup">Sign up</a></li>
-
+          {{#if user}}
           <li><a href="/auth/logout">Logout</a></li>
-
+          {{/if}}
           {{!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
               aria-expanded="false">Dropdown <span class="caret"></span></a>
