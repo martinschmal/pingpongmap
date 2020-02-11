@@ -52,14 +52,12 @@ router.post("/signup", (req, res, next) => {
       password: hashPass
     });
 
-    newUser
-      .save()
-      .then(() => {
-        res.redirect("/");
-      })
-      .catch(err => {
-        res.render("auth/signup", { message: "Something went wrong" });
-      });
+    newUser.save().then(newUser => {
+      if (err) return next(err);
+      res.redirect("/");
+    });
+  }).catch(err => {
+    res.render("auth/signup", { message: "Something went wrong" });
   });
 });
 
