@@ -6,13 +6,13 @@ const tableSchema = new mongoose.Schema({
     required: true
   },
 
-  coordinates: {
+  geoJSON: {
     type: {
       type: String,
       default: "Point"
     },
 
-    geolocation: {
+    coordinates: {
       type: [Number],
       required: true
     }
