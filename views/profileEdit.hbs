@@ -1,9 +1,13 @@
-<h2>Edit profile</h2>
+<h2>Profile edit for {{userList.username}}</h2>
 
-<form action="/profile/{{_id}}" method="POST">
-  <label for="username">Username</label>
-  <input type="text" value="{{user}}" name="username" id="username">
-  <label for="email">Email</label>
-  <input type="text" value="{{}}" name="email" id="email">
+<form action="/profile/{{userList._id}}" method="POST">
+  <p><label for="username">Username</label></p>
+  <input type="text" value="{{userList.username}}" name="username" id="username">
+  <p> <label for="email">Email</label></p>
+  <input type="text" value="{{userList.email}}" name="email" id="email">
+  <p> <label for="profilepicture">Profile picture URL</label></p>
+  <input type="text" value="{{userList.profilepicture}}" name="profilepicture" id="profilepicture">
+  <p> <label for="tables_played">Tables played</label></p>
+  <input type="text" value="{{userList.tables_played}}" name="tables_played" id="tables_played">
   <button type="submit">Edit profile</button>
 </form>
