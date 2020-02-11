@@ -51,9 +51,7 @@ router.post("/profile/:id", (req, res, next) => {
     }
   )
     .then(() => {
-      // console.log(" req.params.id--->" + req.params.id);
-      // console.log("req.body--->" + req.body);
-      // res.redirect(`/profile/${req.params.id}`);
+     
     })
     .catch(err => {
       next(err);
