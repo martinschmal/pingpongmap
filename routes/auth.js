@@ -49,7 +49,13 @@ router.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+      email: "",
+      tables_played: 0,
+      currently_playing: 0,
+      tables_added: 0,
+      profilepicture:
+        "https://c2.staticflickr.com/6/5078/29313044693_e45059c6c7_b.jpg"
     });
 
     newUser.save().then(newUser => {

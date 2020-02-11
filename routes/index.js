@@ -7,11 +7,37 @@ const Table = require("../models/Table");
 //   res.render("index");
 // });
 
+let locations = {};
+
 router.get("/", (req, res, next) => {
   Table.find({})
     .then(result => {
-      console.log("result >>> " + result);
-      res.render("index.hbs", { tablesList: result, user: req.session.user });
+      console.log("result >>> " + result[0]);
+      const cleanedResults = result.map(table => {
+        return {
+          type: "Feature",
+          properties: {
+            Name: table.description,
+            Address: table.location,
+            ["marker-color"]: "#112993",
+            ["marker-symbol"]: "star",
+            ["marker-size"]: "small"
+          },
+          geometry: table.geoJSON
+        };
+      });
+
+      var tableLocation = {
+        type: "FeatureCollection",
+        features: cleanedResults
+      };
+
+      res.render("index.hbs", {
+        tablesList: result,
+        tableLocation: JSON.stringify(tableLocation),
+        user: req.session.user
+      });   
+     
     })
     .catch(err => {
       next(err);

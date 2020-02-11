@@ -23,15 +23,17 @@
     <script src='https://api.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
 
 
+
     <style>
         body {
             margin: 0;
             padding: 0;
+            background-color: #b1eCED;
         }
 
         #map {
             position: absolute;
-            top: 350px;
+            top: 150px;
             bottom: 50px;
             width: 100%
         }
@@ -41,39 +43,26 @@
 <body>
 
 
-    {{#each tablesList}}
+    {{!-- {{#each tablesList}}
     <h2>location: {{location:}}</h2>
     <p>geoJSON: {{geoJSON::}}</p>
     <p>description:{{description:}}</p>
     </a>
-    {{/each}}
+    {{/each}} --}}
 
 
     <div id='map'></div>
     <script>
         L.mapbox.accessToken = 'pk.eyJ1IjoibWFydGluc2NobWFsIiwiYSI6ImNrNmdieXk3YjAybmczb3A4cHUzc3hwMW8ifQ.HJsmN70OKsx6AWO-t2056Q';
 
-        var hospitals = {
-            "type": "FeatureCollection",
-            "features": [
-                {
-                    "type": "Feature",
-                    "properties": { "Name": "VA Medical Center -- Leestown Division", "Address": "2250 Leestown Rd" },
-                    "geometry": { "type": "Point", "coordinates": [-84.539487, 38.072916] }
-                },
-                { "type": "Feature", "properties": { "Name": "St. Joseph East", "Address": "150 N Eagle Creek Dr" }, "geometry": { "type": "Point", "coordinates": [-84.440434, 37.998757] } },
-                { "type": "Feature", "properties": { "Name": "Central Baptist Hospital", "Address": "1740 Nicholasville Rd" }, "geometry": { "type": "Point", "coordinates": [-84.512283, 38.018918] } },
-                { "type": "Feature", "properties": { "Name": "VA Medical Center -- Cooper Dr Division", "Address": "1101 Veterans Dr" }, "geometry": { "type": "Point", "coordinates": [-84.506483, 38.02972] } },
-                { "type": "Feature", "properties": { "Name": "Shriners Hospital for Children", "Address": "1900 Richmond Rd" }, "geometry": { "type": "Point", "coordinates": [-84.472941, 38.022564] } },
-                { "type": "Feature", "properties": { "Name": "Eastern State Hospital", "Address": "627 W Fourth St" }, "geometry": { "type": "Point", "coordinates": [-84.498816, 38.060791] } },
-                { "type": "Feature", "properties": { "Name": "Cardinal Hill Rehabilitation Hospital", "Address": "2050 Versailles Rd" }, "geometry": { "type": "Point", "coordinates": [-84.54212, 38.046568] } },
-                { "type": "Feature", "properties": { "Name": "St. Joseph Hospital", "ADDRESS": "1 St Joseph Dr" }, "geometry": { "type": "Point", "coordinates": [-84.523636, 38.032475] } },
-                { "type": "Feature", "properties": { "Name": "UK Healthcare Good Samaritan Hospital", "Address": "310 S Limestone" }, "geometry": { "type": "Point", "coordinates": [-84.501222, 38.042123] } },
-                {
-                    "type": "Feature", "properties": { "Name": "UK Medical Center", "Address": "800 Rose St" }, "geometry": { "type": "Point", "coordinates": [-84.508205, 38.031254] }
-                }
-            ]
-        };
+        var tableLocation = {{{ tableLocation }}};
+        console.log(tableLocation);
+
+        // var libraries = {
+        //    "type": "FeatureCollection",
+        //    "features": []
+        //};
+
         var libraries = {
             "type": "FeatureCollection",
             "features": [
@@ -86,31 +75,33 @@
             ]
         };
 
+
         // Add marker color, symbol, and size to hospital GeoJSON
-        for(var i = 0; i<hospitals.features.length; i++) {
-            hospitals.features[i].properties['marker-color'] = '#DC143C';
-        hospitals.features[i].properties['marker-symbol'] = 'hospital';
-        hospitals.features[i].properties['marker-size'] = 'small';
-        }
+
+        //     for (var i = 0; i < tableLocation.features.length; i++) {
+        //         tableLocation.features[i].properties['marker-color'] = '#DC143C';
+        //         tableLocation.features[i].properties['marker-symbol'] = 'hospital';
+        //         tableLocation.features[i].properties['marker-size'] = 'small';
+
 
         // Add marker color, symbol, and size to library GeoJSON
         for (var j = 0; j < libraries.features.length; j++) {
-            libraries.features[j].properties['marker-color'] = '#4169E1';
+            libraries.features[j].properties['marker-color'] = '#63b0db';//63b0db /4169E1
             libraries.features[j].properties['marker-symbol'] = 'library';
             libraries.features[j].properties['marker-size'] = 'small';
         }
-
+        console.log(libraries);
         var map = L.mapbox.map('map')
-            .setView([38.05, -84.5], 12)
+            .setView([52.49, 13.47], 12)
             .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/light-v10'));
         map.scrollWheelZoom.disable();
 
-        var hospitalLayer = L.mapbox.featureLayer(hospitals)
+        var hospitalLayer = L.mapbox.featureLayer(tableLocation)
             .addTo(map);
         var libraryLayer = L.mapbox.featureLayer(libraries)
             .addTo(map);
 
-        map.fitBounds(libraryLayer.getBounds());
+        map.fitBounds(hospitalLayer.getBounds());
 
         // Bind a popup to each feature in hospitalLayer and libraryLayer
         hospitalLayer.eachLayer(function (layer) {

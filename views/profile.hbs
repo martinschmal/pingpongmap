@@ -1,12 +1,12 @@
 <h2>Profile page</h2>
 
-<div>
-  <img src="https://www.scrgrowthhub.co.uk/wp-content/uploads/placeholder-user-400x400-1.png" alt="">
+<div class="profilepicture">
+  <img src="{{userList.profilepicture}}" alt="">
 </div>
 
-<h3>Username: </h3>
-<p>Email: </p>
-<p>Tables played:</p>
+<h3>Username: {{userList.username}}</h3>
+<p>Email: {{userList.email}}</p>
+<p>Tables played: {{userList.tables_played}}</p>
 
-<a href="/profile/{{req.user._id}}/edit">Edit profile</a>
-<a href="/books/{{req.user._id}}/delete">Delete profile</a>
+<a href="/profile/edit">Edit profile</a>
+<a href="/profile/{{userList._id}}/delete">Delete profile</a>
