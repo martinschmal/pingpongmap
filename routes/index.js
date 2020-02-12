@@ -50,9 +50,30 @@ router.get("/", (req, res, next) => {
   Table.find({})
     .then(result => {
       console.log("result >>> " + result[0]);
+      const cleanedResults = result.map(table => {
+        return {
+          type: "Feature",
+          properties: {
+            Name: table.description,
+            Address: table.location,
+            table_image: table.table_image,
+            ["marker-color"]: "#112993",
+            ["marker-symbol"]: "star",
+            ["marker-size"]: "small"
+          },
+          geometry: table.geoJSON
+        };
+      });
 
+      var tableLocation = {
+        type: "FeatureCollection",
+        features: cleanedResults
+      };
+      //console.log(result);
       res.render("index.hbs", {
-        tableLocation: JSON.stringify(result),
+        tablesList: result,
+        tableTest: JSON.stringify(result),
+        tableLocation: JSON.stringify(tableLocation),
         user: req.session.user
       });
     })

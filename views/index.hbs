@@ -5,16 +5,16 @@
     <title>Turf.js Map</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAc1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
-    integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-    crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAc1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script> --}}
 
     <script src='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.css' rel='stylesheet' />
@@ -39,10 +39,12 @@
 <body>
     <div id='map'></div>
     <script>
-        L.mapbox.accessToken = 'pk.eyJ1IjoibWFydGluc2NobWFsIiwiYSI6ImNrNmdieXk3YjAybmczb3A4cHUzc3hwMW8ifQ.HJsmN70OKsx6AWO-t2056Q';
 
+        var tableTest = {{{ tableTest }}};
+        console.log("TABLE LOCATION", tableTest)
+        L.mapbox.accessToken = 'pk.eyJ1IjoibWFydGluc2NobWFsIiwiYSI6ImNrNmdieXk3YjAybmczb3A4cHUzc3hwMW8ifQ.HJsmN70OKsx6AWO-t2056Q';
         var tableLocation = {{{ tableLocation }}};
-        console.log(tableLocation)
+        console.log("TABLE LOCATION", tableLocation)
 
         var map = L.mapbox.map('map')
             .setView([52.514249094437, 13.407998085021], 12)
@@ -55,13 +57,16 @@
         //map.fitBounds(tableLayer.getBounds());
 
         // Bind a popup to each feature in tableLayer and libraryLayer
-        tableLayer.eachLayer(function (layer) {
-            layer.bindPopup('<strong>'
-                + layer.feature.properties.Name
-                + '<p><button type="button" class="btn btn-secondary">Info</button>'
-                + '<button type="button" class="btn btn-success">Check-in</button></p>'
-                + '</strong>', { closeButton: true });
-        });
+
+        tableTest.forEach(el => {
+            tableLayer.eachLayer(function (layer) {
+                layer.bindPopup(`<strong>
+                ${layer.feature.properties.Name}
+                <p><a href=/tables/${el._id}> <button type="button" class="btn btn-secondary">Info</button></a >
+        <button type="button" class="btn btn-success">Check-in</button></p > '
+                </strong >`, { closeButton: true });
+            })
+        })
 
         // Open popups on hover
         tableLayer.on('mouseover', function (e) {
@@ -83,6 +88,8 @@
         });
 
     </script>
+
+
 </body>
 
 </html>

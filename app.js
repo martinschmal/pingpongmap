@@ -81,7 +81,7 @@ const index = require("./routes/index");
 app.use("/", index);
 
 const tableRoutes = require("./routes/tables");
-app.use("/", tableRoutes);
+app.use("/tables", tableRoutes);
 
 const authRoutes = require("./routes/auth");
 app.use("/auth", authRoutes);

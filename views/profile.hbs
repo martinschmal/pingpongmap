@@ -1,11 +1,15 @@
 <h2>Profile page of {{userList.username}}, who played {{userList.tables_played}} tables.</h2>
+<div>
+  <div>
+    <p>{{userList.username}}'s email: {{userList.email}}</p>
+  </div>
 
-<p>{{userList.username}}'s email: {{userList.email}}</p>
+  <div>
+    <a href="/profile/edit">Edit this profile</a>
+    <a href="/profile/delete">Delete profile</a>
+  </div>
 
-
-<a href="/profile/{{userList._id}}/edit">Edit this profile</a>
-<a href="/profile/{{userList._id}}/delete">Delete profile</a>
-
-<div class="profilepicture">
-  <img src="{{userList.profilepicture}}" alt="">
+  <div class="profilepicture">
+    <img src="{{userList.profilepicture}}" alt="">
+  </div>
 </div>
