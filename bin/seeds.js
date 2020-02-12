@@ -14,7 +14,7 @@ User.collection.drop();
 
 Table.create(tables)
   .then(result => {
-    console.log(`Created ${result.length} tables`);
+    console.log(`Created ${result.length} pingpong-tables`);
   })
   .catch(err => {
     console.log(err);

@@ -18,13 +18,13 @@
     <p>Indoor: {{table.indoor}}</p>
     <p>Bar: {{table.bar}}</p>
     <p>Lights available: {{table.light}}</p>
-    <p>General condition 1 (bad) - 5 (great): {{table.condition}}</p>
+    <p>General condition (1 = poor, 5 = great): {{table.condition}}</p>
     <p>Last update: {{table.last_update}}</p>
   </div>
 
   <div>
     <a href="/tables/{{table._id}}/edit">Edit this table</a>
-    <a href="/tables/{{userList._id}}/delete">Delete this table</a>
+    <a href="/tables/{{table._id}}/delete">Delete this table</a>
   </div>
 
   <div class="table-picture">
