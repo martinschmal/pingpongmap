@@ -1,28 +1,34 @@
 <h2>Table details</h2>
 <div>
   <div>
-    <p>Location: {{tableList.location}}</p>
-    <p>Neighborhood: {{tableList.neigbourhood}}</p>
-    <p>Currently occupied: {{tableList.occupied}}</p>
+    <p>Location: {{table.location}}</p>
+    <p>Neighbourhood: {{table.neighbourhood}}</p>
+    <p>Currently occupied: {{table.occupied}}</p>
 
-    <p>Description: {{tableList.description}}</p>
-    <p>Public: {{tableList.public}}</p>
-    <p>Park: {{tableList.park}}</p>
-    <p>Playground: {{tableList.playground}}</p>
-    <p>Indoor: {{tableList.indoor}}</p>
-    <p>Bar: {{tableList.bar}}</p>
-    <p>Lights available: {{tableList.light}}</p>
-    <p>General condition 1 (bad) - 5 (great): {{tableList.condition}}</p>
-    <p>Last update: {{tableList.last_update}}</p>
+    <p>Description: {{table.description}}</p>
+
+    {{#if table.public}}
+    <p>Public</p>
+    {{/if}}
+
+    <p>Park: {{table.park}}</p>
+    {{#if table.playground}}
+    <p>Playground</p>
+    {{/if}}
+    <p>Indoor: {{table.indoor}}</p>
+    <p>Bar: {{table.bar}}</p>
+    <p>Lights available: {{table.light}}</p>
+    <p>General condition 1 (bad) - 5 (great): {{table.condition}}</p>
+    <p>Last update: {{table.last_update}}</p>
   </div>
 
   <div>
-    <a href="/tables/{{tableList._id}}/edit">Edit this table</a>
+    <a href="/tables/{{table._id}}/edit">Edit this table</a>
     <a href="/tables/{{userList._id}}/delete">Delete this table</a>
   </div>
 
   <div class="table-picture">
-    <img src="{{tableList.table_image}}" alt="">
+    <img src="{{table.table_image}}" alt="Image of ping pong table">
   </div>
 </div>
 

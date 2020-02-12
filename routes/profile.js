@@ -28,17 +28,6 @@ router.get("/profile/edit", (req, res, next) => {
   }
 });
 
-/// edit user
-router.get("/profile/:id/edit", (req, res, next) => {
-  User.findById(req.user._id)
-    .then(userData => {
-      res.render("profileEdit.hbs", { userList: userData });
-    })
-    .catch(err => {
-      next(err);
-    });
-});
-
 /// edit form user
 router.post("/profile/:id", (req, res, next) => {
   User.updateOne(
@@ -50,9 +39,7 @@ router.post("/profile/:id", (req, res, next) => {
       tables_played: req.body.tables_played
     }
   )
-    .then(() => {
-     
-    })
+    .then(() => {})
     .catch(err => {
       next(err);
     });
@@ -60,9 +47,9 @@ router.post("/profile/:id", (req, res, next) => {
 });
 
 // delete User
-router.get("/profile/:id/delete", (req, res, next) => {
+router.get("/profile/delete", (req, res, next) => {
   if (req.user) {
-    User.deleteOne({ _id: req.params.id })
+    User.deleteOne({ _id: req.user._id })
       .then(() => {
         res.redirect("/");
       })

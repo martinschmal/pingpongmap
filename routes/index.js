@@ -19,7 +19,7 @@ router.get("/", (req, res, next) => {
           properties: {
             Name: table.description,
             Address: table.location,
-            table_image :  table.table_image,
+            table_image: table.table_image,
             ["marker-color"]: "#112993",
             ["marker-symbol"]: "star",
             ["marker-size"]: "small"
@@ -32,13 +32,13 @@ router.get("/", (req, res, next) => {
         type: "FeatureCollection",
         features: cleanedResults
       };
-
+      //console.log(result);
       res.render("index.hbs", {
         tablesList: result,
+        tableTest: JSON.stringify(result),
         tableLocation: JSON.stringify(tableLocation),
         user: req.session.user
-      });   
-     
+      });
     })
     .catch(err => {
       next(err);

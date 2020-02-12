@@ -14,8 +14,9 @@ router.get("/tables", (req, res) => {
 });
 
 // GET route to display table details page
-router.get("/tables/:id", (req, res, next) => {
-  Table.findById(req.table._id)
+router.get("/:id", (req, res, next) => {
+  console.log(req.params.id);
+  Table.findById(req.params.id)
     // .populate("owner comments")
     // .populate({
     //   path: "owner comments",
@@ -24,13 +25,21 @@ router.get("/tables/:id", (req, res, next) => {
     //   }
     // })
     .then(table => {
+      console.log("TABLE", table);
       res.render("tableDetail.hbs", {
-        tableList: result
+        table: table
       });
     })
     .catch(err => {
       next(err);
     });
+});
+
+// GET route to display the table edit page
+router.get("/:id/edit", (req, res, next) => {
+  Table.findById(req.params.id).then(table => {
+    res.render("tableEdit.hbs", { table: table });
+  });
 });
 
 module.exports = router;
