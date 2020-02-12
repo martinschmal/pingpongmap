@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "DEBUG=pingpongmap:* nodemon ./bin/www",
-    "dev-windows": "nodemon ./bin/www"
+    "dev-windows": "nodemon ./bin/www",
+    "start-dev": "nodemon ./bin/www"
   },
   "dependencies": {
     "bcrypt": "^3.0.0",
