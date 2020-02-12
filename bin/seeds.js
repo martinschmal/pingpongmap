@@ -5,15 +5,17 @@ const User = require("../models/User");
 const users = require("../bin/users.json");
 
 mongoose.connect("mongodb://localhost:27017/pingpongmap", () => {
-//mongoose.connect(process.env.MONGODB_URI, () => {
+  //mongoose.connect(process.env.MONGODB_URI, () => {
   console.log("Connected to DB");
 });
 
 Table.collection.drop();
 User.collection.drop();
 
-
- Table.create(tables)
+Table.create(tables)
+  .then(result => {
+    console.log(`Created ${result.length} tables`);
+  })
   .catch(err => {
     console.log(err);
   });
