@@ -69,7 +69,7 @@ router.get("/", (req, res, next) => {
         features: cleanedResults
       };
       //console.log(result);
-      res.render("index.hbs", {
+      res.render("index-map-gl.hbs", {
         tablesList: result,
         tableTest: JSON.stringify(result),
         tableLocation: JSON.stringify(tableLocation),

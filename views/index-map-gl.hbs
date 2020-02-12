@@ -28,7 +28,6 @@
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoibWFydGluc2NobWFsIiwiYSI6ImNrNmdieXk3YjAybmczb3A4cHUzc3hwMW8ifQ.HJsmN70OKsx6AWO-t2056Q';
 
-
     var places = {{{ tableLocation }}};
     console.log(places);
 
@@ -40,30 +39,30 @@
     });
 
 
+
     map.on('load', function () {
       map.addSource('points', {
         'type': 'geojson',
         'data':
-          {{{ tableLocation }}}
-        
+          places
       });
 
 
-    map.addLayer({
-      'id': 'points',
-      'type': 'symbol',
-      'source': 'points',
-      'layout': {
-        // get the icon name from the source's "icon" property
-        // concatenate the name to get an icon from the style's sprite sheet
-        'icon-image': ['concat', ['get', 'icon'], '-15'],
-        // get the title name from the source's "title" property
-        'text-field': ['get', 'title'],
-        'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-        'text-offset': [0, 0.6],
-        'text-anchor': 'top'
-      }
-    });
+      map.addLayer({
+        'id': 'points',
+        'type': 'symbol',
+        'source': 'points',
+        'layout': {
+          // get the icon name from the source's "icon" property
+          // concatenate the name to get an icon from the style's sprite sheet
+          'icon-image': ['concat', ['get', 'marker-symbol'], '-15'],
+          // get the title name from the source's "title" property
+          'text-field': ['get', 'Name'],
+          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+          'text-offset': [0, 0.6],
+          'text-anchor': 'top'
+        }
+      });
     });
   </script>
 
