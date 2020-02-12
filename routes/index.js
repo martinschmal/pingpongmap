@@ -19,6 +19,7 @@ router.get("/", (req, res, next) => {
           properties: {
             Name: table.description,
             Address: table.location,
+            table_image :  table.table_image,
             ["marker-color"]: "#112993",
             ["marker-symbol"]: "star",
             ["marker-size"]: "small"
