@@ -24,8 +24,8 @@ router.get("/tables/:id", (req, res, next) => {
     //   }
     // })
     .then(table => {
-      res.render("tables/tableDetail.hbs", {
-        table: req.table
+      res.render("tableDetail.hbs", {
+        tableList: result
       });
     })
     .catch(err => {
