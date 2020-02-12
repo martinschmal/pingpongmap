@@ -19,6 +19,20 @@
       bottom: 50px;
       width: 100%;
     }
+
+    #marker {
+      background-image: url('https://www.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .mapboxgl-popup {
+      max-width: 200px;
+    }
+    }
   </style>
 </head>
 
@@ -29,7 +43,7 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoibWFydGluc2NobWFsIiwiYSI6ImNrNmdieXk3YjAybmczb3A4cHUzc3hwMW8ifQ.HJsmN70OKsx6AWO-t2056Q';
 
     var places = {{{ tableLocation }}};
-    console.log(places);
+    //console.log(places);
 
     var map = new mapboxgl.Map({
       container: 'map',
@@ -58,9 +72,12 @@
           'text-field': ['get', 'Name'],
           'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
           'text-offset': [0, 0.6],
-          'text-anchor': 'top'
+          'text-anchor': 'top',
+          'icon-allow-overlap': true
         }
       });
+
+
 
       // Create a popup, but don't add it to the map yet.
       var popup = new mapboxgl.Popup({
@@ -68,7 +85,7 @@
         closeOnClick: false
       });
 
-      map.on('mouseenter', 'places', function (e) {
+      map.on('mouseenter', 'points', function (e) {
         // Change the cursor style as a UI indicator.
         map.getCanvas().style.cursor = 'pointer';
 
@@ -86,7 +103,9 @@
         // based on the feature found.
         popup
           .setLngLat(coordinates)
-          .setHTML(description)
+          .setHTML(`
+             <p><a href=/tables/><button type="button" class="btn btn-secondary">Info</button></a>
+             <a href=/tables/><button type="button" class="btn btn-success">Check-in</button></a></p>`)
           .addTo(map);
       });
 
