@@ -25,8 +25,7 @@ let locations = {};
 //             ["marker-size"]: "small",
 //             geometry: table.geometry
 //           },
-          
-          
+
 //         };
 //       });
 
@@ -61,7 +60,7 @@ router.get("/", (req, res, next) => {
             ["marker-symbol"]: "star",
             ["marker-size"]: "small"
           },
-          geometry: table.geoJSON
+          geometry: table.geometry
         };
       });
 
