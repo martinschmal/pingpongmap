@@ -11,6 +11,8 @@
     body {
       margin: 0;
       padding: 0;
+      background-color: #b1eced;
+      color: #112933;
     }
 
     #map {
@@ -18,15 +20,6 @@
       top: 150px;
       bottom: 50px;
       width: 100%;
-    }
-
-    #marker {
-      background-image: url('https://www.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');
-      background-size: cover;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      cursor: pointer;
     }
 
     .mapboxgl-popup {
@@ -43,11 +36,11 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoibWFydGluc2NobWFsIiwiYSI6ImNrNmdieXk3YjAybmczb3A4cHUzc3hwMW8ifQ.HJsmN70OKsx6AWO-t2056Q';
 
     var places = {{{ tableLocation }}};
-    //console.log(places);
+    /// console.log(places);
 
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/light-v9',
+      style: "mapbox://styles/martinschmal/ck6jmyrxj0e1b1io07re9v86j",
       center: [13.42, 52.49],
       zoom: 10
     });
@@ -58,8 +51,7 @@
         'data': places
       });
 
-
-      ////
+      //// Adding Locations to map
       map.addLayer({
         'id': 'points',
         'type': 'symbol',
@@ -77,8 +69,6 @@
         }
       });
 
-
-
       // Create a popup, but don't add it to the map yet.
       var popup = new mapboxgl.Popup({
         closeButton: false,
@@ -89,8 +79,13 @@
         // Change the cursor style as a UI indicator.
         map.getCanvas().style.cursor = 'pointer';
 
-        var coordinates = e.features[0].geometry.coordinates.slice();
-        var description = e.features[0].properties.description;
+        // Variable we want to show in the pop up
+        var coordinates = e.features[0].geometry.coordinates.slice();  //console.log("coor>>> " + coordinates);
+        var description = e.features[0].properties.Name; //console.log("des>>> " + description);
+        var tableImage = e.features[0].properties.table_image; //console.log("image>>> " + tableImage);
+        var games_played = e.features[0].properties.games_played;
+        var table_id = e.features[0].properties.table_id;
+        var occupied = e.features[0].properties.occupied;
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -99,13 +94,20 @@
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
-        // Populate the popup and set its coordinates
-        // based on the feature found.
+        let batImage = "https://images.unsplash.com/photo-1564518440696-ef272968778e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+
+        // define pop-up card and concatenate routes
+        let innerHTML = '<div class="header"><div style="background-image: url('
+          + tableImage + '); background-size: cover; background-position: center 10%; width: 90px; height: 90px; border-radius: 5%"></div>'
+          + description + "<p>Games played:" + games_played + "<p>Table occupied? " + occupied + '</p></div><p><a href="/tableEdit/'
+          + table_id + '">Edit Table Information</a> </p> <p><a href="/tableDetail/'
+          + table_id + '"> <button type="button" class="btn btn-secondary">Info</button></a>&nbsp;&nbsp;<p><a href="/tableCheckIn/'
+          + table_id + '"> <button type="button" class="btn btn-success">Check-in</button></p >'
+
+        // Populate the popup and set its coordinates based on the features
         popup
           .setLngLat(coordinates)
-          .setHTML(`
-             <p><a href=/tables/><button type="button" class="btn btn-secondary">Info</button></a>
-             <a href=/tables/><button type="button" class="btn btn-success">Check-in</button></a></p>`)
+          .setHTML(innerHTML)
           .addTo(map);
       });
 

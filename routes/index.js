@@ -56,6 +56,9 @@ router.get("/", (req, res, next) => {
             Name: table.description,
             Address: table.location,
             table_image: table.table_image,
+            table_id: table._id,
+            games_played: table.games_played,
+            occupied: table.occupied,
             ["marker-color"]: "#112993",
             ["marker-symbol"]: "star",
             ["marker-size"]: "small"

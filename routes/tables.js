@@ -14,7 +14,7 @@ router.get("/tables", (req, res) => {
 });
 
 // GET route to display table details page
-router.get("/:id", (req, res, next) => {
+router.get("/tableDetail/:id", (req, res, next) => {
   console.log(req.params.id);
   Table.findById(req.params.id)
     // .populate("owner comments")

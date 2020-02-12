@@ -98,6 +98,10 @@ const tableSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  games_played: {
+    type: Number,
+    default: 3
+  },
 
   condition: {
     type: Number,
