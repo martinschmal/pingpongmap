@@ -28,7 +28,7 @@ router.get("/profile/edit", (req, res, next) => {
   }
 });
 
-/// edit form user
+/// POST route to submit user edit form
 router.post("/profile/:id", (req, res, next) => {
   User.updateOne(
     { _id: req.params.id },
@@ -46,7 +46,7 @@ router.post("/profile/:id", (req, res, next) => {
   res.redirect(`/profile`);
 });
 
-// delete User
+// GET route to delete user
 router.get("/profile/delete", (req, res, next) => {
   if (req.user) {
     User.deleteOne({ _id: req.user._id })
