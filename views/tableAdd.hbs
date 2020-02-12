@@ -14,7 +14,7 @@
     <p><label for="description">Description</label></p>
     <input type="text" name="description" id="description">
     <p><label for="public">Public</label></p>
-    <input type="checkbox" name="public" id="public">
+    <input type="checkbox" name="public" id="public" checked>
     <p><label for="park">Park</label></p>
     <input type="checkbox" name="park" id="park">
     <p><label for="playground">Playground</label></p>
@@ -25,13 +25,13 @@
     <input type="checkbox" name="bar" id="bar">
     <p><label for="lights">Lights available</label></p>
     <input type="checkbox" name="light" id="light">
-    <p><label for="condition">General condition 1 (bad) - 5 (great)</label></p>
-    <select id="condition">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
+    <p><label for="condition">General condition (1 = poor, 5 = great)</label></p>
+    <select name="condition" id="condition">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option selected="selected">5</option>
     </select>
 
     <p><label for="table_image">Add image</label></p>
