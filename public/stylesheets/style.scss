@@ -11,6 +11,26 @@ a {
   color: #112933;
 }
 
+.login-signup-container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-signup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-signup-form > p {
+  text-align: center;
+}
+
+.signup-login-link {
+  color: #1d73d6;
 body > div > div:nth-child(1) > nav {
   border-radius: 5px;
   border-bottom: 0px;
