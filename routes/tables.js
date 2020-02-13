@@ -104,9 +104,20 @@ router.post("/edit/:id", (req, res, next) => {
 });
 
 // GET route to book a table
-// router.get("/tableCheckIn/:id" => {
-//   //
-// };
+router.get("/tableCheckIn/:id", (req, res, next) => {
+  Table.updateOne(
+    { _id: req.params.id },
+    {
+      occupied: true
+    }
+  )
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch(err => {
+      next(err);
+    });
+});
 
 // GET route to delete a table
 router.get("/delete/:id", (req, res, next) => {
