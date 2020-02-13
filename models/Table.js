@@ -1,11 +1,6 @@
 const mongoose = require("mongoose");
 
 const tableSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    required: true
-  },
-
   // coordinates: {
   //   type: Object,
   //   lat: Number,
