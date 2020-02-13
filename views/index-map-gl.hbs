@@ -68,21 +68,20 @@
 
     var map = new mapboxgl.Map({
       container: 'map',
-      style: "mapbox://styles/martinschmal/ck6jmyrxj0e1b1io07re9v86j",
+      style: "mapbox://styles/martinschmal/ck6kpbf5p0yjt1ilt49h2bjxj",
+      //style: "mapbox://styles/martinschmal/ck6jmyrxj0e1b1io07re9v86j",
       center: [13.42, 52.49],
       zoom: 10
     });
 
 
     map.on('load', function () {
+
+
       map.addSource('points', {
         'type': 'geojson',
         'data': places
       });
-
-      /// add Markers
-
-      /// end Markers
 
 
       //// Adding Locations to map
@@ -90,11 +89,15 @@
         'id': 'points',
         'type': 'symbol',
         'source': 'points',
+        'points': {
+          'fill-color': '#f08',
+          'fill-opacity': 0.4
+        },
         'layout': {
           // get the icon name from the source's "icon" property
           // concatenate the name to get an icon from the style's sprite sheet
           'icon-image': ['concat', ['get', 'marker-symbol'], '-15'],
-          //'icon-image': 'square-stroked',
+          //'icon-image': 'marker',
           // get the title name from the source's "title" property
           //'text-field': ['get', 'Name'],
           'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
@@ -102,7 +105,16 @@
           'text-anchor': 'top',
           'icon-allow-overlap': true
         }
+
+
       });
+
+
+
+
+
+
+
 
       // Create a popup, but don't add it to the map yet.
       var popup = new mapboxgl.Popup({
@@ -121,6 +133,8 @@
         var games_played = e.features[0].properties.games_played;
         var table_id = e.features[0].properties.table_id;
         var occupied = e.features[0].properties.occupied;
+
+
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -148,14 +162,26 @@
 
       map.addControl(new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl
+        mapboxgl: mapboxgl, // Set the mapbox-gl instance
+        marker: false, // Do not use the default marker style
+        placeholder: 'Search for places in Berlin', // Placeholder text for the search bar
+        bbox: [13.0882097323, 52.3418234221, 13.7606105539, 52.6697240587], // Boundary for Berkeley
+        proximity: {
+          longitude: 13.42,
+          latitude: 52.49
+        }
       }));
+
+      map.on('mouseleave', 'places', function () {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+      });
+
 
       //navigation
       map.addControl(
         new mapboxgl.NavigationControl()
       );
-
 
       map.addControl(new mapboxgl.GeolocateControl({
         positionOptions: {
@@ -164,10 +190,8 @@
         trackUserLocation: true
       }));
 
-      map.on('mouseleave', 'places', function () {
-        map.getCanvas().style.cursor = '';
-        popup.remove();
-      });
+
+
     });
   </script>
 
