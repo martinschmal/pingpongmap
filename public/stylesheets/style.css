@@ -1,7 +1,20 @@
 body {
-  font-family: "DM Sans", sans-serif; }
+  font-family: "DM Sans", sans-serif;
+  color: #112933;
+  margin: 0px;
+  padding: 0px;
+  background-color: #b1eced;
+  color: #112933; }
 
 a {
   color: #112933; }
+
+body > div > div:nth-child(1) > nav {
+  border-radius: 5px;
+  border-bottom: 0px; }
+
+body > div > div:nth-child(2) {
+  padding-top: 0px;
+  border-top: 0px; }
 
 /*# sourceMappingURL=style.css.map */
