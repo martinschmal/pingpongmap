@@ -120,25 +120,25 @@ router.get("/tableCheckIn/:id", (req, res, next) => {
 });
 
 // GET route to delete a table
-router.get("/delete/:id", (req, res, next) => {
-  // Role owner needs to be defined in model--------------------
-  if (req.user.role === "owner") {
-    Table.deleteOne({ _id: req.params.id })
-      .then(() => {
-        res.redirect("/");
-      })
-      .catch(err => {
-        next(err);
-      });
-  } else {
-    Table.deleteOne({ _id: req.params.id, owner: req.user._id })
-      .then(() => {
-        res.redirect("/");
-      })
-      .catch(err => {
-        next(err);
-      });
-  }
-});
+// router.get("/delete/:id", (req, res, next) => {
+//   // Role owner needs to be defined in model--------------------
+//   if (req.user.role === "owner") {
+//     Table.deleteOne({ _id: req.params.id })
+//       .then(() => {
+//         res.redirect("/");
+//       })
+//       .catch(err => {
+//         next(err);
+//       });
+//   } else {
+//     Table.deleteOne({ _id: req.params.id, owner: req.user._id })
+//       .then(() => {
+//         res.redirect("/");
+//       })
+//       .catch(err => {
+//         next(err);
+//       });
+//   }
+// });
 
 module.exports = router;
