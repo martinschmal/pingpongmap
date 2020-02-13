@@ -28,20 +28,30 @@
       color: #112933;
     }
 
+    #map-container {
+      position: relative;
+    }
+
     #map {
-      position: absolute;
-      top: 75px;
-      bottom: 10px;
-      width: 99%;
+      position: relative;
+      height: 90vh;
+      width: 100%;
+      border-radius: 5px;
     }
 
     .mapboxgl-popup {
       max-width: 200px;
+      min-width: 200px;
+      align-content: center;
+
+
     }
 
     .mapboxgl-popup-content {
-      text-align: left;
-      font-family: 'Open Sans', sans-serif;
+      text-align: center;
+      background-color: #b1eced;
+      color: #112933;
+      border-radius: 5px;
     }
 
     .marker {
@@ -58,142 +68,139 @@
 </head>
 
 <body>
-  <div id="map"></div>
+  <div id="map-container">
+    <div id="map">
 
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoibWFydGluc2NobWFsIiwiYSI6ImNrNmdieXk3YjAybmczb3A4cHUzc3hwMW8ifQ.HJsmN70OKsx6AWO-t2056Q';
+      <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWFydGluc2NobWFsIiwiYSI6ImNrNmdieXk3YjAybmczb3A4cHUzc3hwMW8ifQ.HJsmN70OKsx6AWO-t2056Q';
 
-    var places = {{{ tableLocation }}};
-    /// console.log(places);
+        var places = {{{ tableLocation }}};
+        /// console.log(places);
 
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: "mapbox://styles/martinschmal/ck6kpbf5p0yjt1ilt49h2bjxj",
-      //style: "mapbox://styles/martinschmal/ck6jmyrxj0e1b1io07re9v86j",
-      center: [13.42, 52.49],
-      zoom: 10
-    });
-
-
-    map.on('load', function () {
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: "mapbox://styles/martinschmal/ck6kpbf5p0yjt1ilt49h2bjxj",
+          //style: "mapbox://styles/martinschmal/ck6jmyrxj0e1b1io07re9v86j",
+          center: [13.42, 52.49],
+          zoom: 10
+        });
 
 
-      map.addSource('points', {
-        'type': 'geojson',
-        'data': places
-      });
+        map.on('load', function () {
 
 
-      //// Adding Locations to map
-      map.addLayer({
-        'id': 'points',
-        'type': 'symbol',
-        'source': 'points',
-        'points': {
-          'fill-color': '#f08',
-          'fill-opacity': 0.4
-        },
-        'layout': {
-          // get the icon name from the source's "icon" property
-          // concatenate the name to get an icon from the style's sprite sheet
-          'icon-image': ['concat', ['get', 'marker-symbol'], '-15'],
-          //'icon-image': 'marker',
-          // get the title name from the source's "title" property
-          //'text-field': ['get', 'Name'],
-          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-          'text-offset': [0, 0.6],
-          'text-anchor': 'top',
-          'icon-allow-overlap': true
-        }
+          map.addSource('points', {
+            'type': 'geojson',
+            'data': places
+          });
 
 
-      });
+          //// Adding Locations to map
+          map.addLayer({
+            'id': 'points',
+            'type': 'symbol',
+            'source': 'points',
+            'points': {
+              'fill-color': '#f08',
+              'fill-opacity': 0.4
+            },
+            'layout': {
+              // get the icon name from the source's "icon" property
+              // concatenate the name to get an icon from the style's sprite sheet
+              'icon-image': ['concat', ['get', 'marker-symbol'], '-15'],
+              //'icon-image': 'marker',
+              // get the title name from the source's "title" property
+              //'text-field': ['get', 'Name'],
+              'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+              'text-offset': [0, 0.6],
+              'text-anchor': 'top',
+              'icon-allow-overlap': true
+            }
 
 
+          });
 
 
+          // Create a popup, but don't add it to the map yet.
+          var popup = new mapboxgl.Popup({
+            closeButton: true,
+            closeOnClick: true
+          });
 
+          map.on('mouseenter', 'points', function (e) {
+            // Change the cursor style as a UI indicator.
+            map.getCanvas().style.cursor = 'pointer';
 
-
-
-      // Create a popup, but don't add it to the map yet.
-      var popup = new mapboxgl.Popup({
-        closeButton: true,
-        closeOnClick: true
-      });
-
-      map.on('mouseenter', 'points', function (e) {
-        // Change the cursor style as a UI indicator.
-        map.getCanvas().style.cursor = 'pointer';
-
-        // Variable we want to show in the pop up
-        var coordinates = e.features[0].geometry.coordinates.slice();  //console.log("coor>>> " + coordinates);
-        var description = e.features[0].properties.Name; //console.log("des>>> " + description);
-        var tableImage = e.features[0].properties.table_image; //console.log("image>>> " + tableImage);
-        var games_played = e.features[0].properties.games_played;
-        var table_id = e.features[0].properties.table_id;
-        var occupied = e.features[0].properties.occupied;
+            // Variable we want to show in the pop up
+            var coordinates = e.features[0].geometry.coordinates.slice();  //console.log("coor>>> " + coordinates);
+            var description = e.features[0].properties.Name; //console.log("des>>> " + description);
+            var tableImage = e.features[0].properties.table_image; //console.log("image>>> " + tableImage);
+            var games_played = e.features[0].properties.games_played;
+            var table_id = e.features[0].properties.table_id;
+            var occupied = e.features[0].properties.occupied;
 
 
 
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
 
-        let batImage = "https://images.unsplash.com/photo-1564518440696-ef272968778e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+            let batImage = "https://images.unsplash.com/photo-1564518440696-ef272968778e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
 
-        // define pop-up card and concatenate routes
-        let innerHTML = '<div class="header"><div style="background-image: url('
-          + tableImage + '); background-size: cover; background-position: center 10%; width: 90px; height: 90px; border-radius: 5%"></div>'
-          + description + "<p>Games played:" + games_played + "<p>Table occupied? " + occupied + '</p></div><p><a href="/tables/edit/'
-          + table_id + '">Edit Table Information</a> </p> <p><a href="/tables/tableDetail/'
-          + table_id + '"> <button type="button" class="btn btn-secondary">Info</button></a>&nbsp;&nbsp;<p><a href="/tables/tableCheckIn/'
-          + table_id + '"> <button type="button" class="btn btn-success">Check-in</button></p >'
+            // define pop-up card and concatenate routes
+            let innerHTML = '<div class="header"><div style="background-image: url('
+              + tableImage + '); background-size: cover; background-position: center; width: 90px; height: 90px; border-radius: 5px"></div>'
+              + "<p>Games played:" + games_played + "<p>Table occupied? " + occupied + '</p><p><a href="/tables/edit/'
+              + table_id + '">Edit Table Information</a> </p> <p><a href="/tables/tableDetail/'
+              + table_id + '"> <button type="button" class="btn btn-secondary">Info</button></a><p><a href="/tables/tableCheckIn/'
+              + table_id + '"> <button type="button" class="btn btn-success">Check-in</button></p >'
 
-        // Populate the popup and set its coordinates based on the features
-        popup
-          .setLngLat(coordinates)
-          .setHTML(innerHTML)
-          .addTo(map);
-      });
+            // Populate the popup and set its coordinates based on the features
+            popup
+              .setLngLat(coordinates)
+              .setHTML(innerHTML)
+              .addTo(map);
+          });
 
-      map.addControl(new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl, // Set the mapbox-gl instance
-        marker: false, // Do not use the default marker style
-        placeholder: 'Search for places in Berlin', // Placeholder text for the search bar
-        bbox: [13.0882097323, 52.3418234221, 13.7606105539, 52.6697240587], // Boundary for Berkeley
-        proximity: {
-          longitude: 13.42,
-          latitude: 52.49
-        }
-      }));
+          map.addControl(new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl, // Set the mapbox-gl instance
+            marker: false, // Do not use the default marker style
+            placeholder: 'Search for places in Berlin', // Placeholder text for the search bar
+            bbox: [13.0882097323, 52.3418234221, 13.7606105539, 52.6697240587], // Boundary for Berkeley
+            proximity: {
+              longitude: 13.42,
+              latitude: 52.49
+            }
+          }));
 
-      map.on('mouseleave', 'places', function () {
-        map.getCanvas().style.cursor = '';
-        popup.remove();
-      });
-
-
-      //navigation
-      map.addControl(
-        new mapboxgl.NavigationControl()
-      );
-
-      map.addControl(new mapboxgl.GeolocateControl({
-        positionOptions: {
-          enableHighAccuracy: true
-        },
-        trackUserLocation: true
-      }));
+          map.on('mouseleave', 'places', function () {
+            map.getCanvas().style.cursor = '';
+            popup.remove();
+          });
 
 
+          //navigation
+          map.addControl(
+            new mapboxgl.NavigationControl()
+          );
 
-    });
-  </script>
+          map.addControl(new mapboxgl.GeolocateControl({
+            positionOptions: {
+              enableHighAccuracy: true
+            },
+            trackUserLocation: true
+          }));
+
+
+
+        });
+      </script>
+    </div>
+  </div>
 
 </body>
 

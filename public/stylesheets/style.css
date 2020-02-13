@@ -1,10 +1,14 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
 
 a {
-  color: #112933; }
+  color: #112933;
+}
 
-  
+.nav {
+  border-radius: 5px;
+}
 
 /*# sourceMappingURL=style.css.map */
