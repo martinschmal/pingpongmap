@@ -41,7 +41,7 @@
     .mapboxgl-popup {
       max-width: 200px;
       min-width: 200px;
-      align-content: center;
+      align-content: left;
     }
 
     .mapboxgl-popup-content {
@@ -148,54 +148,51 @@
             if (occupied == true) {
               innerHTML = '<div class="header"><div style="background-image: url('
                 + tableImage + '); background-size: cover; background-position: center; width: 90px; height: 90px; border-radius: 5px"></div>'
-                + "<p>Games played:" + games_played + "<p>Table occupied? " + occupied + '</p><p><a href="/tables/edit/'
-                + table_id + '">Edit Table Information</a> </p> <p><a href="/tables/tableDetail/'
-                + table_id + '"> <button type="button" class="btn btn-secondary">Info</button></a><p><a href="/tables/tableCheckIn/'
-                + table_id + '"> <button type="button" class="btn btn-warning">Check-out</button></p >'
-            } else{
+                + "<p>Games played:" + games_played + '<p></p><button type="button" class="btn btn-secondary">Details</button></a><a href="/tables/tableCheckIn/' + table_id
+                + '"> <button type="button" class="btn btn-warning">Check-out</button></p >'
+            } else {
               innerHTML = '<div class="header"><div style="background-image: url('
                 + tableImage + '); background-size: cover; background-position: center; width: 90px; height: 90px; border-radius: 5px"></div>'
-                + "<p>Games played:" + games_played + "<p>Table occupied? " + occupied + '</p><p><a href="/tables/edit/'
-                + table_id + '">Edit Table Information</a> </p> <p><a href="/tables/tableDetail/'
-                + table_id + '"> <button type="button" class="btn btn-secondary">Info</button></a><p><a href="/tables/tableCheckIn/'
-                + table_id + '"> <button type="button" class="btn btn-success">Check-in</button></p >'
-          }
+                + "<p>Games played:" + games_played + '<p></p><button type="button" class="btn btn-secondary">Details</button></a><a href="/tables/tableCheckIn/' + table_id
+                + '"> <button type="button" class="btn btn-info">Edit Table</button></a><p></p><a href="/tables/edit/' + table_id
+                + '"> <button type="button" class="btn btn-success">Check-in!</button></p >'
+            }
 
             // Populate the popup and set its coordinates based on the features
             popup
               .setLngLat(coordinates)
               .setHTML(innerHTML)
               .addTo(map);
-        });
+          });
 
-        map.addControl(new MapboxGeocoder({
-          accessToken: mapboxgl.accessToken,
-          mapboxgl: mapboxgl, // Set the mapbox-gl instance
-          marker: false, // Do not use the default marker style
-          placeholder: 'Search for places in Berlin', // Placeholder text for the search bar
-          bbox: [13.0882097323, 52.3418234221, 13.7606105539, 52.6697240587], // Boundary for Berkeley
-          proximity: {
-            longitude: 13.42,
-            latitude: 52.49
-          }
-        }));
+          map.addControl(new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl, // Set the mapbox-gl instance
+            marker: false, // Do not use the default marker style
+            placeholder: 'Search for places in Berlin', // Placeholder text for the search bar
+            bbox: [13.0882097323, 52.3418234221, 13.7606105539, 52.6697240587], // Boundary for Berkeley
+            proximity: {
+              longitude: 13.42,
+              latitude: 52.49
+            }
+          }));
 
-        map.on('mouseleave', 'places', function () {
-          map.getCanvas().style.cursor = '';
-          popup.remove();
-        });
+          map.on('mouseleave', 'places', function () {
+            map.getCanvas().style.cursor = '';
+            popup.remove();
+          });
 
-        //navigation
-        map.addControl(
-          new mapboxgl.NavigationControl()
-        );
+          //navigation
+          map.addControl(
+            new mapboxgl.NavigationControl()
+          );
 
-        map.addControl(new mapboxgl.GeolocateControl({
-          positionOptions: {
-            enableHighAccuracy: true
-          },
-          trackUserLocation: true
-        }));
+          map.addControl(new mapboxgl.GeolocateControl({
+            positionOptions: {
+              enableHighAccuracy: true
+            },
+            trackUserLocation: true
+          }));
 
         });
       </script>

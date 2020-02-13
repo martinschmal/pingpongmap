@@ -1,15 +1,8 @@
 body {
   padding: 50px;
-  font-family: 'DM Sans', sans-serif;
- /* // font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
-}
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #112933;
-}
-
-.nav {
-  border-radius: 5px;
-}
+  color: #00b7ff; }
 
 /*# sourceMappingURL=style.css.map */

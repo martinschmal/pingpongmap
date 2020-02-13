@@ -133,6 +133,26 @@ router.get("/tableCheckIn/:id", (req, res, next) => {
     });
 });
 
+// GET route to close a game on a table
+router.get("/tableCheckOut/:id", (req, res, next) => {
+  Table.findById(req.params.id)
+    .then(resultTable => {
+      let timesPlayed = resultTable.games_played + 1;
+      Table.updateOne(
+        { _id: req.params.id },
+        {
+          occupied: false,
+          games_played: timesPlayed
+        }
+      ).then(() => {
+        res.redirect("/");
+      });
+    })
+    .catch(err => {
+      next(err);
+    });
+});
+
 // GET route to delete a table
 // router.get("/delete/:id", (req, res, next) => {
 //   // Role owner needs to be defined in model--------------------
