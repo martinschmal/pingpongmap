@@ -19,7 +19,6 @@
 
   </script>
 
-
   <style>
     body {
       margin: 0;
@@ -43,8 +42,6 @@
       max-width: 200px;
       min-width: 200px;
       align-content: center;
-
-
     }
 
     .mapboxgl-popup-content {
@@ -88,14 +85,12 @@
 
         map.on('load', function () {
 
-
           map.addSource('points', {
             'type': 'geojson',
             'data': places
           });
 
-
-          //// Adding Locations to map
+     //// Adding Locations to map
           map.addLayer({
             'id': 'points',
             'type': 'symbol',
@@ -117,9 +112,7 @@
               'icon-allow-overlap': true
             }
 
-
           });
-
 
           // Create a popup, but don't add it to the map yet.
           var popup = new mapboxgl.Popup({
@@ -138,8 +131,6 @@
             var games_played = e.features[0].properties.games_played;
             var table_id = e.features[0].properties.table_id;
             var occupied = e.features[0].properties.occupied;
-
-
 
             // Ensure that if the map is zoomed out such that multiple
             // copies of the feature are visible, the popup appears
@@ -182,7 +173,6 @@
             popup.remove();
           });
 
-
           //navigation
           map.addControl(
             new mapboxgl.NavigationControl()
@@ -195,13 +185,10 @@
             trackUserLocation: true
           }));
 
-
-
         });
       </script>
     </div>
   </div>
 
 </body>
-
 </html>

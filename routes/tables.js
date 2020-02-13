@@ -79,13 +79,15 @@ router.get("/edit/:id", (req, res, next) => {
 
 // POST route to submit table edit form
 router.post("/edit/:id", (req, res, next) => {
-  console.log(req.body);
+  console.log("post >" + req.body);
   Table.updateOne(
     { _id: req.params.id },
     {
       location: req.body.location,
       neighbourhood: req.body.neighbourhood,
       description: req.body.description,
+      // lat: req.body.geometry.coordinates[0],
+      lng: req.body.geometry.coordinates[1],
       public: !!req.body.public,
       park: !!req.body.park,
       playground: !!req.body.playground,

@@ -1,5 +1,28 @@
 <h2>Add a new ping pong table</h2>
 
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Display my coordinates</button>
+
+<p id="demo"></p>
+
+<script>
+  var x = document.getElementById("demo");
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+      "<br>Longitude: " + position.coords.longitude;
+  }
+</script>
+
 <div class="form-group">
 
   <form action="/tables/new" method="POST">
@@ -10,7 +33,9 @@
     <p><label for="coordinates">Latitude</label></p>
     <input type="text" name="coordinates" id="coordinates">
     <p><label for="coordinates">Longitude</label></p>
+
     <input type="text" name="coordinates" id="coordinates">
+
     <p><label for="description">Description</label></p>
     <input type="text" name="description" id="description">
     <p><label for="public">Public</label></p>
