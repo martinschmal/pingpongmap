@@ -4,8 +4,8 @@ const tables = require("../bin/tables.json");
 const User = require("../models/User");
 const users = require("../bin/users.json");
 
-mongoose.connect("mongodb://localhost:27017/pingpongmap", () => {
-  //mongoose.connect(process.env.MONGODB_URI, () => {
+//mongoose.connect("mongodb://localhost:27017/pingpongmap", () => {
+  mongoose.connect(process.env.MONGODB_URI, () => {
   console.log("Connected to DB");
 });
 
