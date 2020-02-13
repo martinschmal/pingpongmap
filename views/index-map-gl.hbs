@@ -41,7 +41,7 @@
     .mapboxgl-popup {
       max-width: 200px;
       min-width: 200px;
-      align-content: left;
+      align-content: center;
     }
 
     .mapboxgl-popup-content {
@@ -58,6 +58,19 @@
       height: 50px;
       border-radius: 50%;
       cursor: pointer;
+    }
+
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .btn-outline-warning {
+      color: red;
+      background-color: yellow;
     }
 
     }
@@ -148,14 +161,15 @@
             if (occupied == true) {
               innerHTML = '<div class="header"><div style="background-image: url('
                 + tableImage + '); background-size: cover; background-position: center; width: 90px; height: 90px; border-radius: 5px"></div>'
-                + "<p>Games played:" + games_played + '<p></p><button type="button" class="btn btn-secondary">Details</button></a><a href="/tables/tableCheckIn/' + table_id
-                + '"> <button type="button" class="btn btn-warning">Check-out</button></p >'
+                + "<h5>Games played: " + games_played + '</h5><p></a><p><a href="/tables/tableCheckOut/' + table_id
+                + '"> <button type="button" class="btn btn-warning">Check out table</button></p > <h6>' + description + '</h6>'
             } else {
               innerHTML = '<div class="header"><div style="background-image: url('
                 + tableImage + '); background-size: cover; background-position: center; width: 90px; height: 90px; border-radius: 5px"></div>'
-                + "<p>Games played:" + games_played + '<p></p><button type="button" class="btn btn-secondary">Details</button></a><a href="/tables/tableCheckIn/' + table_id
-                + '"> <button type="button" class="btn btn-info">Edit Table</button></a><p></p><a href="/tables/edit/' + table_id
-                + '"> <button type="button" class="btn btn-success">Check-in!</button></p >'
+                + "<h5>Games played: " + games_played + '</h5><p>  <a href="/tables/tableDetail/' + table_id
+                + '"> <button type="button" class="btn btn-outline-secondary">Details</button></a><p><a href="/tables/edit/' + table_id
+                + '"> <button type="button" class="btn btn-outline-info">Edit Table</button></a><p><a href="/tables/tableCheckIn/' + table_id
+                + '"> <button type="button" class="btn btn-success">Check in!</button></a></p > <h6>' + description + '</h6>'
             }
 
             // Populate the popup and set its coordinates based on the features
