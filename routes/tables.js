@@ -28,8 +28,9 @@ router.post("/new", (req, res, next) => {
     {
       location: req.body.location,
       neighbourhood: req.body.neighbourhood,
-      coordinates: req.body.coordinates,
       description: req.body.description,
+      // lat: req.body.geometry.coordinates[0],
+      // lng: req.body.geometry.coordinates[1],
       public: !!req.body.public,
       park: !!req.body.park,
       playground: !!req.body.playground,
@@ -86,8 +87,6 @@ router.post("/edit/:id", (req, res, next) => {
       location: req.body.location,
       neighbourhood: req.body.neighbourhood,
       description: req.body.description,
-      // lat: req.body.geometry.coordinates[0],
-      lng: req.body.geometry.coordinates[1],
       public: !!req.body.public,
       park: !!req.body.park,
       playground: !!req.body.playground,
@@ -107,14 +106,27 @@ router.post("/edit/:id", (req, res, next) => {
 
 // GET route to book a table
 router.get("/tableCheckIn/:id", (req, res, next) => {
-  Table.updateOne(
-    { _id: req.params.id },
-    {
-      occupied: true
-    }
-  )
-    .then(() => {
-      res.redirect("/");
+  Table.findById(req.params.id)
+    .then(resultTable => {
+      let timesPlayed = resultTable.games_played + 1;
+      Table.updateOne(
+        { _id: req.params.id },
+        {
+          occupied: true,
+          games_played: timesPlayed
+        }
+      ).then(result => {
+        console.log(result, "RESULT-------------");
+        setTimeout(() => {
+          Table.updateOne(
+            { _id: req.params.id },
+            {
+              occupied: false
+            }
+          ).then(() => {});
+        }, 10000);
+        res.redirect("/");
+      });
     })
     .catch(err => {
       next(err);
