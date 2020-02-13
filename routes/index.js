@@ -60,8 +60,8 @@ router.get("/", (req, res, next) => {
             games_played: table.games_played,
             occupied: table.occupied,
             ["marker-color"]: "#112993",
-            ["marker-symbol"]: "star",
-            ["marker-size"]: "small"
+            ["marker-symbol"]: "marker",
+            ["marker-size"]: "medium"
           },
           geometry: table.geometry
         };
