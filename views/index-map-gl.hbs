@@ -99,9 +99,9 @@
         // define pop-up card and concatenate routes
         let innerHTML = '<div class="header"><div style="background-image: url('
           + tableImage + '); background-size: cover; background-position: center 10%; width: 90px; height: 90px; border-radius: 5%"></div>'
-          + description + "<p>Games played:" + games_played + "<p>Table occupied? " + occupied + '</p></div><p><a href="/tableEdit/'
-          + table_id + '">Edit Table Information</a> </p> <p><a href="/tableDetail/'
-          + table_id + '"> <button type="button" class="btn btn-secondary">Info</button></a>&nbsp;&nbsp;<p><a href="/tableCheckIn/'
+          + description + "<p>Games played:" + games_played + "<p>Table occupied? " + occupied + '</p></div><p><a href="/tables/edit/'
+          + table_id + '">Edit Table Information</a> </p> <p><a href="/tables/tableDetail/'
+          + table_id + '"> <button type="button" class="btn btn-secondary">Info</button></a>&nbsp;&nbsp;<p><a href="/tables/tableCheckIn/'
           + table_id + '"> <button type="button" class="btn btn-success">Check-in</button></p >'
 
         // Populate the popup and set its coordinates based on the features

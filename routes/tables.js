@@ -20,7 +20,9 @@ router.get("/new", (req, res) => {
 });
 
 // POST route to submit the Table Add form
-router.post("/", (req, res, next) => {
+router.post("/new", (req, res, next) => {
+  console.log(req.body);
+
   Table.create(
     // NOT FINAL:--------------------------------
     {
@@ -28,12 +30,12 @@ router.post("/", (req, res, next) => {
       neighbourhood: req.body.neighbourhood,
       coordinates: req.body.coordinates,
       description: req.body.description,
-      public: req.body.public,
-      park: req.body.park,
-      playground: req.body.playground,
-      indoor: req.body.indoor,
-      bar: req.body.bar,
-      light: req.body.light,
+      public: !!req.body.public,
+      park: !!req.body.park,
+      playground: !!req.body.playground,
+      indoor: !!req.body.indoor,
+      bar: !!req.body.bar,
+      light: !!req.body.light,
       condition: req.body.condition,
       table_image: req.body.table_image
     }
@@ -69,39 +71,45 @@ router.get("/tableDetail/:id", (req, res, next) => {
 });
 
 // GET route to display the table edit page
-router.get("/:id/edit", (req, res, next) => {
+router.get("/edit/:id", (req, res, next) => {
   Table.findById(req.params.id).then(table => {
     res.render("tableEdit.hbs", { table: table });
   });
 });
 
 // POST route to submit table edit form
-router.post("/:id"),
-  (req, res, next) => {
-    Table.updateOne(
-      { _id: req.params.id },
-      {
-        location: req.body.location,
-        neighbourhood: req.body.neighbourhood,
-        description: req.body.description,
-        public: req.body.public,
-        park: req.body.park,
-        playground: req.body.playground,
-        indoor: req.body.indoor,
-        bar: req.body.bar,
-        light: req.body.light,
-        condition: req.body.condition
-      }
-    )
-      .then(() => {})
-      .catch(err => {
-        next(err);
-      });
-    res.redirect("/:id");
-  };
+router.post("/edit/:id", (req, res, next) => {
+  console.log(req.body);
+  Table.updateOne(
+    { _id: req.params.id },
+    {
+      location: req.body.location,
+      neighbourhood: req.body.neighbourhood,
+      description: req.body.description,
+      public: !!req.body.public,
+      park: !!req.body.park,
+      playground: !!req.body.playground,
+      indoor: !!req.body.indoor,
+      bar: !!req.body.bar,
+      light: !!req.body.light,
+      condition: req.body.condition
+    }
+  )
+    .then(() => {
+      res.redirect("/tables/tableDetail/" + req.params.id);
+    })
+    .catch(err => {
+      next(err);
+    });
+});
+
+// GET route to book a table
+// router.get("/tableCheckIn/:id" => {
+//   //
+// };
 
 // GET route to delete a table
-router.get("/:id/delete", (req, res, next) => {
+router.get("/delete/:id", (req, res, next) => {
   // Role owner needs to be defined in model--------------------
   if (req.user.role === "owner") {
     Table.deleteOne({ _id: req.params.id })

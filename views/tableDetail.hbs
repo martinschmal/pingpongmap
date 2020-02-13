@@ -3,28 +3,48 @@
   <div>
     <p>Location: {{table.location}}</p>
     <p>Neighbourhood: {{table.neighbourhood}}</p>
-    <p>Currently occupied: {{table.occupied}}</p>
 
     <p>Description: {{table.description}}</p>
 
-    {{#if table.public}}
-    <p>Public</p>
-    {{/if}}
+    <h4>Table properties</h3>
 
-    <p>Park: {{table.park}}</p>
-    {{#if table.playground}}
-    <p>Playground</p>
-    {{/if}}
-    <p>Indoor: {{table.indoor}}</p>
-    <p>Bar: {{table.bar}}</p>
-    <p>Lights available: {{table.light}}</p>
-    <p>General condition (1 = poor, 5 = great): {{table.condition}}</p>
-    <p>Last update: {{table.last_update}}</p>
+      {{#if table.occupied}}
+      <p>Table is currently occupied</p>
+      {{else}}
+      <p>Table is currently free</p>
+      {{/if}}
+
+      {{#if table.public}}
+      <p>Publicly accessible</p>
+      {{/if}}
+
+      {{#if table.park}}
+      <p>Located in a park</p>
+      {{/if}}
+
+      {{#if table.playground}}
+      <p>Located on a playground</p>
+      {{/if}}
+
+      {{#if table.indoor}}
+      <p>Located indoors</p>
+      {{/if}}
+
+      {{#if table.bar}}
+      <p>Located in a bar</p>
+      {{/if}}
+
+      {{#if table.light}}
+      <p>Lights available</p>
+      {{/if}}
+
+      <p>General condition (1 = poor, 5 = great): {{table.condition}}</p>
+      <p>Last update: {{table.last_update}}</p>
   </div>
 
   <div>
-    <a href="/tables/{{table._id}}/edit">Edit this table</a>
-    <a href="/tables/{{table._id}}/delete">Delete this table</a>
+    <a href="/tables/edit/{{table._id}}">Edit this table</a>
+    <a href="/tables/delete/{{table._id}}">Delete this table</a>
   </div>
 
   <div class="table-picture">

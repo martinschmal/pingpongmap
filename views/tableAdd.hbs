@@ -2,7 +2,7 @@
 
 <div class="form-group">
 
-  <form action="/" method="POST">
+  <form action="/tables/new" method="POST">
     <p><label for="location">Location city</label></p>
     <input type="text" name="location" id="location">
     <p><label for="neighbourhood">Neighbourhood</label></p>
@@ -27,11 +27,11 @@
     <input type="checkbox" name="light" id="light">
     <p><label for="condition">General condition (1 = poor, 5 = great)</label></p>
     <select name="condition" id="condition">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option selected="selected">5</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option selected="selected" value="5">5</option>
     </select>
 
     <p><label for="table_image">Add image</label></p>
