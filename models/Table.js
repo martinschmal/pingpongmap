@@ -41,7 +41,7 @@ const tableSchema = new mongoose.Schema({
     default: "please add table info!"
   },
 
-  neigbourhood: {
+  neighbourhood: {
     // eg. district "Kreuzberg"
     type: String,
     default: "please add the district"
