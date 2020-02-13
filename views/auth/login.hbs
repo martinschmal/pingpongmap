@@ -1,23 +1,30 @@
-<h2>Login</h2>
 <div class="form-group">
+  <div class="login-signup-container">
+    <div>
+      <h2>Login</h2>
+    </div>
 
-  <form action=" /auth/login" method="POST" id="form-container">
+    <div>
+      <form class="login-signup-form form-group" action=" /auth/login" method="POST" id="form-container">
 
-    <input id="username" type="text" name="username" placeholder="JonSnow">
-    <p><label for="username">Username</label></p>
+        <input id="username" type="text" name="username" placeholder="JonSnow">
+        <p><label for="username"></label></p>
 
-    <input id="password" type="password" name="password" placeholder="Your password">
-    <p> <label for="password">Password</label></p>
+        <input id="password" type="password" name="password" placeholder="Your password">
+        <p> <label for="password"></label></p>
 
-    {{#if message }}
-    <div class="error-message">{{ message }}</div>
-    {{/if}}
+        {{#if message }}
+        <div class="error-message">{{ message }}</div>
+        {{/if}}
 
 
-    <button>Login</button>
+        <button class="btn btn-outline-dark">Login</button>
+      </form>
 
-    <p class="account-message">
-      Don't have an account yet?
-      <a href="/auth/signup">Signup</a>
-    </p>
+      <p class="account-message">
+        Don't have an account yet?
+        <a class="signup-login-link" href="/auth/signup">Signup</a>
+      </p>
+    </div>
+  </div>
 </div>
