@@ -2,55 +2,48 @@
 
 <p>Click the button to get your coordinates.</p>
 
-<button onclick="getLocation()">Display my coordinates</button>
+<button onclick="getLocation()">Add current position!</button>
 
 <p id="demo"></p>
-
-<script>
-  var x = document.getElementById("demo");
-
-  function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-      x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-  }
-
-  function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude +
-      "<br>Longitude: " + position.coords.longitude;
-  }
-</script>
 
 <div class="form-group">
 
   <form action="/tables/new" method="POST">
-    <p><label for="location">Location city</label></p>
+
+   
     <input type="text" name="location" id="location">
-    <p><label for="neighbourhood">Neighbourhood</label></p>
+    <p><label for="location">Location city</label></p>
+
     <input type="text" name="neighbourhood" id="neighbourhood">
+    <p><label for="neighbourhood">Neighbourhood</label></p>
+
+    <input type="text" name="lat" id="lat">
     <p><label for="coordinates">Latitude</label></p>
-    <input type="text" name="coordinates" id="coordinates">
+
+    <input type="text" name="lng" id="lng" value=>
     <p><label for="coordinates">Longitude</label></p>
 
-    <input type="text" name="coordinates" id="coordinates">
-
-    <p><label for="description">Description</label></p>
     <input type="text" name="description" id="description">
-    <p><label for="public">Public</label></p>
+    <p><label for="description">Description</label></p>
+
     <input type="checkbox" name="public" id="public" checked>
-    <p><label for="park">Park</label></p>
+    <p><label for="public">Public</label></p>
+
     <input type="checkbox" name="park" id="park">
-    <p><label for="playground">Playground</label></p>
+    <p><label for="park">Park</label></p>
+
     <input type="checkbox" name="playground" id="playground">
-    <p><label for="indoor">Indoor</label></p>
+    <p><label for="playground">Playground</label></p>
+
     <input type="checkbox" name="indoor" id="indoor">
-    <p><label for="bar">Bar</label></p>
+    <p><label for="indoor">Indoor</label></p>
+
     <input type="checkbox" name="bar" id="bar">
-    <p><label for="lights">Lights available</label></p>
+    <p><label for="bar">Bar</label></p>
+
     <input type="checkbox" name="light" id="light">
-    <p><label for="condition">General condition (1 = poor, 5 = great)</label></p>
+    <p><label for="lights">Lights available</label></p>
+
     <select name="condition" id="condition">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -58,6 +51,7 @@
       <option value="4">4</option>
       <option selected="selected" value="5">5</option>
     </select>
+    <p><label for="condition">General condition (1 = poor, 5 = great)</label></p>
 
     <p><label for="table_image">Add image</label></p>
     <input type="text" name="table_image" id="table_image">
@@ -65,5 +59,32 @@
 
     <button type="submit">Add this table</button>
   </form>
+
+
+  <script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+
+
+
+
+    }
+
+    function showPosition(position) {
+
+      document.getElementById("lng").value = position.coords.longitude;
+      document.getElementById("lat").value = position.coords.latitude;
+    }
+
+
+
+  </script>
+
 
 </div>
