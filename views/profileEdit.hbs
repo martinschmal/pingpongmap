@@ -1,25 +1,25 @@
-<h3>Hello {{userList.username}}, you can edit your profile here.</h3>
-
 <div class="form-group">
+  <div class="profile-form-container">
+    <h3>Edit profile for {{userList.username}}</h3>
 
-  <form action=" /profile/{{userList._id}}" method="POST">
+    <form class="profile-form form-group" action="/profile/{{userList._id}}" method="POST">
 
-    <input type="text" value="{{userList.username}}" name="username" id="username">
-    <p><label for="username">Username</label></p>
-
-
-    <input type="text" value="{{userList.email}}" name="email" id="email">
-    <p> <label for="email">Email</label></p>
+      <input type="text" value="{{userList.username}}" name="username" id="username">
+      <p><label for="username">Username</label></p>
 
 
-    <input type="text" value="{{userList.profilepicture}}" name="profilepicture" id="profilepicture">
-    <p> <label for="profilepicture">Profile picture URL</label></p>
+      <input type="text" value="{{userList.email}}" name="email" id="email">
+      <p> <label for="email">Email</label></p>
 
 
-    <input type="text" value="{{userList.tables_played}}" name="tables_played" id="tables_played">
-    <p> <label for="tables_played">Tables played</label></p>
+      <input type="text" value="{{userList.profilepicture}}" name="profilepicture" id="profilepicture">
+      <p> <label for="profilepicture">Profile picture URL</label></p>
 
-    <button class="btn btn-outline-dark" type="submit">Save changes</button>
-    <button type="submit">Save changes</button>
-  </form>
+
+      <input type="text" value="{{userList.tables_played}}" name="tables_played" id="tables_played">
+      <p> <label for="tables_played">Tables played</label></p>
+
+      <button class="btn btn-outline-dark" type="submit">Save changes</button>
+    </form>
+  </div>
 </div>

@@ -41,3 +41,79 @@ body > div > div:nth-child(2) {
   padding-top: 0px;
   border-top: 0px;
 }
+
+.profilepicture {
+  width: 40vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 4%;
+}
+
+.profile-form-container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+.profile-headline {
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+.profile-container {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: 1%;
+}
+
+.profile-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.profile-buttons > p {
+  display: flex;
+  margin: 5px;
+}
+
+@media only screen and (min-width: 500px) {
+  .profile-container {
+    flex-direction: row;
+  }
+}
+
+.table-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tableDetails-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

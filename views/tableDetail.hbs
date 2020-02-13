@@ -1,55 +1,59 @@
-<h2>Table details</h2>
-<div>
+<div class="tableDetails-container">
   <div>
-    <p>Location: {{table.location}}</p>
-    <p>Neighbourhood: {{table.neighbourhood}}</p>
-
-    <p>Description: {{table.description}}</p>
-
-    <h4>Table properties</h3>
-
-      {{#if table.occupied}}
-      <p>Table is currently occupied</p>
-      {{else}}
-      <p>Table is currently free</p>
-      {{/if}}
-
-      {{#if table.public}}
-      <p>Publicly accessible</p>
-      {{/if}}
-
-      {{#if table.park}}
-      <p>Located in a park</p>
-      {{/if}}
-
-      {{#if table.playground}}
-      <p>Located on a playground</p>
-      {{/if}}
-
-      {{#if table.indoor}}
-      <p>Located indoors</p>
-      {{/if}}
-
-      {{#if table.bar}}
-      <p>Located in a bar</p>
-      {{/if}}
-
-      {{#if table.light}}
-      <p>Lights available</p>
-      {{/if}}
-
-      <p>General condition (1 = poor, 5 = great): {{table.condition}}</p>
-      <p>Last update: {{table.last_update}}</p>
+    <h2>Table details</h2>
   </div>
-
   <div>
-    <a href="/tables/edit/{{table._id}}">Edit this table</a>
-    {{!-- <a href="/tables/delete/{{table._id}}">Delete this table</a> --}}
+    <div>
+      <p>Location: {{table.location}}</p>
+      <p>Neighbourhood: {{table.neighbourhood}}</p>
+
+      <p>Description: {{table.description}}</p>
+
+      <h4>Table properties</h3>
+
+        {{#if table.occupied}}
+        <p>Table is currently occupied</p>
+        {{else}}
+        <p>Table is currently free</p>
+        {{/if}}
+
+        {{#if table.public}}
+        <p>Publicly accessible</p>
+        {{/if}}
+
+        {{#if table.park}}
+        <p>Located in a park</p>
+        {{/if}}
+
+        {{#if table.playground}}
+        <p>Located on a playground</p>
+        {{/if}}
+
+        {{#if table.indoor}}
+        <p>Located indoors</p>
+        {{/if}}
+
+        {{#if table.bar}}
+        <p>Located in a bar</p>
+        {{/if}}
+
+        {{#if table.light}}
+        <p>Lights available</p>
+        {{/if}}
+
+        <p>General condition (1 = poor, 5 = great): {{table.condition}}</p>
+        <p>Last update: {{table.last_update}}</p>
+    </div>
+
+    <div>
+      <a href="/tables/edit/{{table._id}}"><button class="btn btn-dark" type="submit">Edit this table</button></a>
+      {{!-- <a href="/tables/delete/{{table._id}}">Delete this table</a> --}}
+    </div>
+
+    <div class="table-picture">
+      <img src="{{table.table_image}}" alt="Image of ping pong table">
+    </div>
   </div>
 
-  <div class="table-picture">
-    <img src="{{table.table_image}}" alt="Image of ping pong table">
-  </div>
+  <h3>Comments:</h3>
 </div>
-
-<h3>Comments:</h3>
