@@ -17,7 +17,7 @@ router.get("/", (req, res, next) => {
             games_played: table.games_played,
             occupied: table.occupied,
             ["marker-color"]: "#112993",
-            ["marker-symbol"]: "marker",
+            ["marker-symbol"]: "tennis",
             ["marker-size"]: "medium"
           },
           geometry: table.geometry

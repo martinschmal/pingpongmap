@@ -36,7 +36,7 @@
       position: relative;
       height: 90vh;
       width: 100%;
-          }
+    }
 
     .mapboxgl-popup {
       max-width: 200px;
@@ -158,7 +158,7 @@
             if (occupied == true) {
               innerHTML = '<div class="header"><div style="background-image: url('
                 + tableImage + '); background-size: cover; background-position: center; width: 90px; height: 90px; border-radius: 5px"></div>'
-                + "<h5>Games played: " + games_played + '</h5><p></a><p><a href="/tables/tableCheckOut/' + table_id
+                + "<h5>Games played: " + games_played + '</h5><p><h5>Table occupied<h5></a><p><a href="/tables/tableCheckOut/' + table_id
                 + '"> <button type="button" class="btn btn-warning">Check out table</button></p > <h6>' + description + '</h6>'
             } else {
               innerHTML = '<div class="header"><div style="background-image: url('
