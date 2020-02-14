@@ -1,48 +1,49 @@
 <div class="tableDetails-container">
   <div>
-    <h2>Table details</h2>
+    <h3>Table details</h3>
   </div>
+
+
   <div>
     <div>
-      <p>Location: {{table.location}}</p>
-      <p>Neighbourhood: {{table.neighbourhood}}</p>
-
-      <p>Description: {{table.description}}</p>
-
-      <h4>Table properties</h3>
+      <ul>
+        <li>Location: {{table.location}}</li>
+        <li>Neighbourhood: {{table.neighbourhood}}</li>
+        <li>Description: {{table.description}}</li>
 
         {{#if table.occupied}}
-        <p>Table is currently occupied</p>
+        <li>Table is currently occupied</li>
         {{else}}
-        <p>Table is currently free</p>
+        <li>Table is currently free</li>
         {{/if}}
 
         {{#if table.public}}
-        <p>Publicly accessible</p>
+        <li>Publicly accessible</li>
         {{/if}}
 
         {{#if table.park}}
-        <p>Located in a park</p>
+        <li>Located in a park</li>
         {{/if}}
 
         {{#if table.playground}}
-        <p>Located on a playground</p>
+        <li>Located on a playground</li>
         {{/if}}
 
         {{#if table.indoor}}
-        <p>Located indoors</p>
+        <li>Located indoors</li>
         {{/if}}
 
         {{#if table.bar}}
-        <p>Located in a bar</p>
+        <li>Located in a bar</li>
         {{/if}}
 
         {{#if table.light}}
-        <p>Lights available</p>
+        <li>Lights available</li>
         {{/if}}
 
-        <p>General condition (1 = poor, 5 = great): {{table.condition}}</p>
-        <p>Last update: {{table.last_update}}</p>
+        <li>General condition (1 = poor, 5 = great): {{table.condition}}</li>
+        <li>Last update: {{table.last_update}}</li>
+      </ul>
     </div>
 
     <div>
@@ -50,11 +51,14 @@
       {{!-- <a href="/tables/delete/{{table._id}}">Delete this table</a> --}}
     </div>
 
-    <div class="table-picture">
+    <div class="table-image">
       <img src="{{table.table_image}}" alt="Image of ping pong table">
     </div>
+
+
   </div>
-</div>
-<div>
-  <h3>Comments:</h3>
+
+  <div>
+    <h3>Comments:</h3>
+  </div>
 </div>

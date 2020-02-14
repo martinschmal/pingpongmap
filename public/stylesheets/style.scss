@@ -116,8 +116,14 @@ body > div > div:nth-child(2) {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .checkbox-item {
   margin-left: 1%;
+}
+
+.table-image {
+  width: 30vw;
+  margin: 4% 0 4% 0;
 }
