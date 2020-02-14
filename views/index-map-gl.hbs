@@ -46,10 +46,12 @@
 
     .mapboxgl-popup-content {
       text-align: center;
-      background-color: #b1eced;
+
+      background-color: rgba(177, 236, 237, 0.5);
       color: #112933;
       border-radius: 5px;
     }
+
 
     .marker {
       background-image: url("https://images.unsplash.com/photo-1564518440696-ef272968778e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
@@ -106,19 +108,19 @@
             'type': 'symbol',
             'source': 'points',
             'points': {
-              'fill-color': '#f08',
-              'fill-opacity': 0.4
+              'fill-color': '#fff',
+              //'fill-opacity': 1
             },
             'layout': {
               // get the icon name from the source's "icon" property
               // concatenate the name to get an icon from the style's sprite sheet
               'icon-image': ['concat', ['get', 'marker-symbol'], '-15'],
-              //'icon-image': 'marker',
+              //'icon-image': url("https://images.unsplash.com/photo-1564518440696-ef272968778e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
               // get the title name from the source's "title" property
               //'text-field': ['get', 'Name'],
-              'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+              'icon-size': 1.5,
               'text-offset': [0, 0.6],
-              'text-anchor': 'top',
+              //'text-anchor': 'top',
               'icon-allow-overlap': true
             }
 
