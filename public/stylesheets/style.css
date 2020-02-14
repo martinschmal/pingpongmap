@@ -99,4 +99,7 @@ body > div > div:nth-child(2) {
   flex-direction: column;
   justify-content: center; }
 
+.checkbox-item {
+  margin-left: 1%; }
+
 /*# sourceMappingURL=style.css.map */

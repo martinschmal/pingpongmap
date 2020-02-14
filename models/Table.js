@@ -32,7 +32,7 @@ const tableSchema = new mongoose.Schema({
   location: {
     // Street address or description of Location
     type: String,
-    default: "please add location info!"
+    default: ""
   },
 
   description: {
@@ -44,7 +44,7 @@ const tableSchema = new mongoose.Schema({
   neighbourhood: {
     // eg. district "Kreuzberg"
     type: String,
-    default: "please add the district"
+    default: ""
   },
   table_image: {
     type: String,

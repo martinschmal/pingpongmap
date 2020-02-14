@@ -10,54 +10,54 @@
 
 
     <div class="form-group">
-      <button class="btn btn-dark" onclick="getLocation()">Add current position!</button>
+      <button class="btn btn-dark" onclick="getLocation()">Add current position</button>
 
       <p id="demo"></p>
 
       <form class="form-group" action="/tables/new" method="POST">
 
 
-        <input type="text" name="location" id="location">
-        <p><label for="location">Location city</label></p>
+        <input type="text" name="location" id="location" placeholder="Location">
+        <p><label for="location"></label></p>
 
-        <input type="text" name="neighbourhood" id="neighbourhood">
-        <p><label for="neighbourhood">Neighbourhood</label></p>
+        <input type="text" name="neighbourhood" id="neighbourhood" placeholder="Neighbourhood">
+        <p><label for="neighbourhood"></label></p>
 
-        <input type="text" name="lat" id="lat">
-        <p><label for="coordinates">Latitude</label></p>
+        <input type="text" name="lat" id="lat" placeholder="Latitude">
+        <p><label for="coordinates"></label></p>
 
-        <input type="text" name="lng" id="lng" value=>
-        <p><label for="coordinates">Longitude</label></p>
+        <input type="text" name="lng" id="lng" placeholder="Longitude">
+        <p><label for="coordinates"></label></p>
 
-        <input type="text" name="description" id="description">
-        <p><label for="description">Description</label></p>
+        <input type="text" name="description" id="description" placeholder="Description">
+        <p><label for="description"></label></p>
 
-        <input type="checkbox" name="public" id="public" checked>
-        <p><label for="public">Public</label></p>
+        <p><input type="checkbox" name="public" id="public" checked>
+          <label class="checkbox-item" for="public">Public</label></p>
 
-        <input type="checkbox" name="park" id="park">
-        <p><label for="park">Park</label></p>
+        <p><input type="checkbox" name="park" id="park">
+          <label class="checkbox-item" for="park">Park</label></p>
 
-        <input type="checkbox" name="playground" id="playground">
-        <p><label for="playground">Playground</label></p>
+        <p><input type="checkbox" name="playground" id="playground">
+          <label class="checkbox-item" for="playground">Playground</label></p>
 
-        <input type="checkbox" name="indoor" id="indoor">
-        <p><label for="indoor">Indoor</label></p>
+        <p><input type="checkbox" name="indoor" id="indoor">
+          <label class="checkbox-item" for="indoor">Indoor</label></p>
 
-        <input type="checkbox" name="bar" id="bar">
-        <p><label for="bar">Bar</label></p>
+        <p><input type="checkbox" name="bar" id="bar">
+          <label class="checkbox-item" for="bar">Bar</label></p>
 
-        <input type="checkbox" name="light" id="light">
-        <p><label for="lights">Lights available</label></p>
+        <p><input type="checkbox" name="light" id="light">
+          <label class="checkbox-item" for="lights">Lights available</label></p>
 
-        <select name="condition" id="condition">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option selected="selected" value="5">5</option>
-        </select>
-        <p><label for="condition">General condition (1 = poor, 5 = great)</label></p>
+        <p><select name="condition" id="condition">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option selected="selected" value="5">5</option>
+          </select>
+          <label for="condition">General condition (1 = poor, 5 = great)</label></p>
 
         {{!-- <p><label for="table_image">Add image</label></p>
     <input type="text" name="table_image" id="table_image"> --}}

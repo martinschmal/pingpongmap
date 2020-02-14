@@ -9,43 +9,45 @@
 
       <form class="form-group" action="/tables/edit/{{table._id}}" method="POST">
 
-        <input type="text" value="{{table.location}}" name="location" id="location">
+        <input type="text" value="{{table.location}}" name="location" id="location" placeholder="Add a location">
         <p><label for="location">Location</label></p>
 
 
 
-        <input type="text" value="{{table.neighbourhood}}" name="neighbourhood" id="neighbourhood">
+        <input type="text" value="{{table.neighbourhood}}" name="neighbourhood" id="neighbourhood"
+          placeholder="Add a neighbourhood">
         <p><label for="neighbourhood">Neighbourhood</label></p>
 
-        <input type="text" value="{{table.description}}" name="description" id="description">
+        <input type="text" value="{{table.description}}" name="description" id="description"
+          placeholder="Add a description">
         <p><label for="description">Description</label></p>
 
-        <input type="checkbox" {{#if table.public}}checked{{/if}} name="public" id="public">
-        <p><label for="public">Public</label></p>
+        <p><input type="checkbox" {{#if table.public}}checked{{/if}} name="public" id="public">
+          <label class="checkbox-item" for="public">Public</label></p>
 
-        <input type="checkbox" {{#if table.park}}checked{{/if}} name="park" id="park">
-        <p><label for="park">Park</label></p>
+        <p><input type="checkbox" {{#if table.park}}checked{{/if}} name="park" id="park">
+          <label class="checkbox-item" for="park">Park</label></p>
 
-        <input type="checkbox" {{#if table.playground}}checked{{/if}} name="playground" id="playground">
-        <p><label for="playground">Playground</label></p>
+        <p><input type="checkbox" {{#if table.playground}}checked{{/if}} name="playground" id="playground">
+          <label class="checkbox-item" for="playground">Playground</label></p>
 
-        <input type="checkbox" {{#if table.indoor}}checked{{/if}} name="indoor" id="indoor">
-        <p><label for="indoor">Indoor</label></p>
+        <p><input type="checkbox" {{#if table.indoor}}checked{{/if}} name="indoor" id="indoor">
+          <label class="checkbox-item" for="indoor">Indoor</label></p>
 
-        <input type="checkbox" {{#if table.bar}}checked{{/if}} name="bar" id="bar">
-        <p><label for="bar">Bar</label></p>
+        <p><input type="checkbox" {{#if table.bar}}checked{{/if}} name="bar" id="bar">
+          <label class="checkbox-item" for="bar">Bar</label></p>
 
-        <input type="checkbox" {{#if table.light}}checked{{/if}} name="light" id="light">
-        <p><label for="checkbox">Lights available</label></p>
+        <p><input type="checkbox" {{#if table.light}}checked{{/if}} name="light" id="light">
+          <label class="checkbox-item" for="checkbox">Lights available</label></p>
 
-        <select name="condition" id="condition">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <p><label for="condition">General condition (1 = poor, 5 = great)</label></p>
+        <p><select name="condition" id="condition">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <label for="condition">General condition (1 = poor, 5 = great)</label></p>
 
 
         <button class="btn btn-dark" type="submit">Update table</button>
