@@ -129,7 +129,8 @@
           // Create a popup, but don't add it to the map yet.
           var popup = new mapboxgl.Popup({
             closeButton: true,
-            closeOnClick: true
+            closeOnClick: true,
+            closeOnMove: true
           });
 
           map.on('mouseenter', 'points', function (e) {
